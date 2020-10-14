@@ -1,0 +1,111 @@
+html,body{
+    width: 100%;
+    height: 100%;
+}
+/* 引入字体图标库 */
+@font-face {
+    font-family: 'iconfont';
+    src: url('./font/iconfont.eot');
+    src: url('./font/iconfont.eot?#iefix') format('embedded-opentype'),
+        url('./font/iconfont.woff2') format('woff2'),
+        url('./font/iconfont.woff') format('woff'),
+        url('./font/iconfont.ttf') format('truetype'),
+        url('./font/iconfont.svg#iconfont') format('svg');
+}
+/* 定义iconfont样式 */
+.iconfont {
+    font-family: "iconfont" !important;
+    font-size: .25rem;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.flx{
+    display: flex;
+}
+/* 最外层容器 */
+.warp{
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+}
+/* 主要区域空间分割 */
+/* header */
+.hd{
+    height: 1.25rem;
+    width: 100%;
+    background: darkslateblue;
+    align-items: center;
+}
+.logo{
+    flex: 2;
+    text-align: center;
+    font-size: .5rem;
+    color: #fff;
+}
+.search{
+    flex: 3;
+    height: .6rem;
+    background: #fff;
+    width: 100%;
+    border-radius: .3rem;
+    -webkit-border-radius: .3rem;
+    -moz-border-radius: .3rem;
+    -ms-border-radius: .3rem;
+    -o-border-radius: .3rem;
+    line-height: .6rem;
+    padding-left: .1rem;
+}
+.searchBox{
+    flex:1;
+    height: .6rem;
+    line-height: .6rem;
+    font-size: .3rem;
+}
+.photo{
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+}
+.myPhoto{
+    height: .78125rem;
+    line-height: .78125rem;
+    width: .78125rem;
+    border-radius: 100%;
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    -ms-border-radius: 100%;
+    -o-border-radius: 100%;
+    background: #fff;
+    text-align: center;
+    font-weight: 900;
+}
+/* box */
+.box{
+    flex: 1;
+    overflow-y: auto;
+}
+/* footer */
+.ft{
+    width: 100%;
+    height: 1.25rem;
+    background: rgb(248, 109, 84);
+}
+.ft-btn{
+    flex: 1;
+    height: 1.25rem;
+    color: #fff;
+    flex-direction: column;
+    text-align: center;
+}
+.icon{
+    height: .9375rem;
+    line-height: .9375rem;
+    font-size: .5rem;
+}
+.txt{
+    height: .3125rem;
+    line-height: .3125rem;
+    font-size: .25rem;
+}
