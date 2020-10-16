@@ -1,0 +1,168 @@
+html,body{
+    width: 100%;
+    height: 100%;
+}
+/* 引入字体图标库 */
+@font-face {
+    font-family: 'iconfont';
+    src: url('./font/iconfont.eot');
+    src: url('./font/iconfont.eot?#iefix') format('embedded-opentype'),
+        url('./font/iconfont.woff2') format('woff2'),
+        url('./font/iconfont.woff') format('woff'),
+        url('./font/iconfont.ttf') format('truetype'),
+        url('./font/iconfont.svg#iconfont') format('svg');
+}
+/* 定义iconfont样式 */
+.iconfont {
+    font-family: "iconfont" !important;
+    font-size: .25rem;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.flx{
+    display: flex;
+}
+/* 最外层容器 */
+.warp{
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+}
+/* header */
+.hd{
+    position: relative;
+    height: 1.25rem;
+    width: 100%;
+    background: darkslateblue;
+    text-align: center;
+    line-height: 1.25rem;
+    color: #fff;
+    font-size: .4rem;
+}
+.sp-search{
+    position: absolute;
+    right: .3125rem;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+
+    width: 2.2rem;
+    height: 1rem;
+    line-height: 1rem;
+    text-align: center;
+    font-size: .35rem;
+    border-radius: .6rem;
+    -webkit-border-radius: .6rem;
+    -moz-border-radius: .6rem;
+    -ms-border-radius: .6rem;
+    -o-border-radius: .6rem;
+
+    background: cornsilk;
+    color: cyan;
+}
+/* box */
+.box{
+    flex: 1;
+    overflow-y: auto;
+    background: lightgray;
+}
+.sug{
+    width: 100%;
+    height: 4rem;
+    background: #fff;
+    margin-bottom:.15625rem ;
+    flex-wrap: wrap;
+}
+.sugImg{
+    width: 3.328125rem;
+    height: 2rem;
+}
+.si1{
+    background: chartreuse;
+}
+.si2{
+    background: firebrick;
+}
+.si3{
+    background: palevioletred;
+}
+.si4{
+    background: gold;
+}
+.si5{
+    background: darkcyan;
+}
+.si6{
+    background: orangered;
+}
+.sp1{
+    width: 100%;
+    height: 5rem;
+    background: #fff;
+    margin-bottom:.15625rem ;
+}
+.sp1box{
+    width: 100%;
+    height: 4rem;
+    flex-wrap: wrap;
+}
+.sp1Img{
+    width: 3.328125rem;
+    height: 2rem;
+}
+.sp11{
+    background: paleturquoise;
+}
+.sp12{
+    background: papayawhip;
+}
+.sp13{
+    background: palegreen;
+}
+.sp14{
+    background: plum;
+}
+.sp15{
+    background: powderblue;
+}
+.sp16{
+    background: palegoldenrod;
+}
+.sp2{
+    width: 100%;
+    height: 5rem;
+    background: #fff;
+    margin-bottom:.15625rem ;
+}
+.sp-tit{
+    width: 100%;
+    height: 1rem;
+    line-height: 1rem;
+    font-size: .3rem;
+    text-indent: .15625rem;
+}
+/* footer */
+.ft{
+    width: 100%;
+    height: 1.25rem;
+    background: rgb(248, 109, 84);
+}
+.ft-btn{
+    flex: 1;
+    height: 1.25rem;
+    color: #fff;
+    flex-direction: column;
+    text-align: center;
+}
+.icon{
+    height: .9375rem;
+    line-height: .9375rem;
+    font-size: .5rem;
+}
+.txt{
+    height: .3125rem;
+    line-height: .3125rem;
+    font-size: .25rem;
+}
