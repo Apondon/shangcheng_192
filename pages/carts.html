@@ -38,9 +38,32 @@
 </head>
 <body>
     <div class="warp flx">
-        <header class="hd">购物车</header>
-        <div class="box"></div>
-        <footer class="ft"></footer>
+        <!-- header -->
+        <header class="hd">
+            购物车
+            <i class="back iconfont">&#xe618;</i>
+        </header>
+        <!-- box -->
+        <div class="box" id='box'></div>
+        <!-- footer -->
+        <footer class="ft flx">
+            <!-- 全选 -->
+            <div class="checkAll">
+                <label for="cka">
+                    <input type="checkbox" name="" id="cka">
+                    全选
+                </label>
+            </div>
+            <!-- 总价 -->
+            <div class="totalPrice">
+                总价: ￥998
+            </div>
+            <!-- 结算 -->
+            <div class="pay">
+                去结算
+            </div>
+        </footer>
     </div>
 </body>
+<script src="../js/carts.js"></script>
 </html>
