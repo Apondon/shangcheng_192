@@ -2,12 +2,11 @@
 var box = document.getElementById('box')
   // 查找到全选按钮
 var cka = document.getElementById('cka')
-
+// 找到结算按钮
+var pay = document.getElementById('pay')
 // innerHTML  innerText
-
 // box.innerHTML = '<div>我是div</div>'
 // box.innerText = '<div>我是div</div>'
-
 // box.innerHTML = '<div>'+1+'</div><div>'+2+'</div>'
 
 // 购物车中的商品数据
@@ -30,28 +29,31 @@ var cks = document.getElementsByClassName('ck')
 var add = document.getElementsByClassName('add')
 // 找到减号按钮
 var rdu = document.getElementsByClassName('reduce')
-
+// 获取删除按钮
+var dele = document.getElementsByClassName('dele')
 
 // 生成dom结构的函数
-function createDom(){
+function createDom(arr){
     // 第二种字符串拼接的方法
     // 定义一个空的字符串
     var s = ''
+    // 进行参数获取
+    var lst = arr || list
     // 循环
-    for(let i = 0;i < list.length; i ++){
+    for(let i = 0;i < lst.length; i ++){
         s += `<div class="goodsCard">
                     <!-- 标题 -->
                     <div class="gc-tit">
                         <label for="">
-                            <input type="checkbox" class='ck' data=${list[i].id}>
-                            ${list[i].name}
+                            <input type="checkbox" class='ck' data=${lst[i].id} ${lst[i].check?'checked':''}>
+                            ${lst[i].name}
                         </label>
                     </div>
                     <!-- 详情 -->
                     <div class="gc-detail flx">
                         <div class="gc-img"></div>
                         <div class="gc-ctt">
-                            <div class="gc-txt">名称: ${list[i].name}</div>
+                            <div class="gc-txt">名称: ${lst[i].name}</div>
                             <div class="gc-txt">编著: 爱谁谁</div>
                             <div class="gc-txt">出版: 某某出版社</div>
                             <div class="gc-txt">简介: 哔哔哔哔哔哔哔哔哔哔哔哔哔哔哔哔哔哔哔哔哔哔哔哔哔哔哔哔哔哔哔哔哔哔哔哔哔哔哔哔哔哔哔哔哔哔哔哔哔哔哔哔哔哔哔哔哔哔哔哔哔哔哔哔哔哔哔哔哔哔哔哔哔哔哔哔哔哔哔哔哔哔哔哔哔哔哔哔哔哔哔哔哔哔哔哔哔哔哔哔哔哔哔哔哔</div>
@@ -59,16 +61,16 @@ function createDom(){
                     </div>
                     <!-- 单价与删除 -->
                     <div class="price flx">
-                        <div class="pri">单价:${list[i].price}</div>
-                        <div class="dele iconfont">&#xe619;</div>
+                        <div class="pri">单价:${lst[i].price}</div>
+                        <div class="dele iconfont" data=${lst[i].id}>&#xe619;</div>
                     </div>
                     <!-- 小计与数量修改 -->
                     <div class="total flx">
-                        <div class="tot">总价:${list[i].price*list[i].num}</div>
+                        <div class="tot">总价:${lst[i].price*lst[i].num}</div>
                         <div class="tot-btn flx">
-                            <span class="reduce" data=${list[i].id}>-</span>
-                            <span class="num">${list[i].num}</span>
-                            <span class="add" data=${list[i].id}>+</span>
+                            <span class="reduce" data=${lst[i].id}>-</span>
+                            <span class="num">${lst[i].num}</span>
+                            <span class="add" data=${lst[i].id}>+</span>
                         </div>
                     </div>
                 </div>`
@@ -193,8 +195,11 @@ function bindEvents(){
                     list[i].num += 1
                     // 重新创建页面结构
                     createDom()
+                    // 重新计算总价
+                    countPrice()
                 }
             }
+            console.log(list)
         })
     }
 
@@ -218,7 +223,8 @@ function bindEvents(){
                         list[i].num -= 1
                         // 重新创建页面结构
                         createDom()
-
+                        // 重新计算总价
+                        countPrice()
                     }
                 }
             }
@@ -226,7 +232,73 @@ function bindEvents(){
         })
     }
 
+    // 删除按钮的功能代码
+    for(let i=0;i<dele.length;i++){
+        dele[i].addEventListener('click',function(){
+            // this 指向当前事件绑定的按钮
+            console.log(this)
+            // 获取当前按钮绑定的data属性的值
+            console.log(this.attributes.data.value)
+            // 修改数据
+            // 找出要修改的数据
+            for(let i=0;i<list.length;i++){
+                // data属性值和数据id相同，则将该条数据进行修改
+                if(list[i].id == this.attributes.data.value){ 
+                    // 将选中的元素数据删除
+                    list.splice(i,1)
+                    // 重新创建页面结构
+                    createDom()
+                    // 重新计算总价
+                    countPrice()
+                }
+            }
+            console.log(list)
+            // 判断全选按钮是否应该勾选
+            flag = true
+            // 遍历数据
+            for(let i=0;i<list.length;i++){
+                // 若某条数据的check值为false 说明至少有一条数据未被选中，则不勾选全选按钮，否则将勾选全选按钮
+                //  list[i].check -> true   !list[i].check -> false
+                //  list[i].check -> false   !list[i].check -> true
+                if(!list[i].check) flag = false
+            }
+            // 判断flag
+            // 若flag为true 则全选按钮选中 否则不选中
+            if(flag){
+                // 将全选按钮checked属性置为true
+                cka.checked = true
+            } else{
+                // 若flag为false 则说明至少有一个按钮没有被选中
+                // 将全选按钮checked属性置为false
+                cka.checked = false
+            }
+
+        })
+    }
+
 }
+
+// 结算按钮绑定功能
+pay.addEventListener('click',function(){
+    console.log('pay')
+    // 进行数据筛选，保存未被结算的数据
+    var arr = []
+    // 将选中的商品删除
+    for(let i=0 ; i<list.length;i++){
+        console.log(list[i].check)
+        // 将未被选中的元素进行筛选
+        if(!list[i].check) arr.push(list[i]);
+    }
+    console.log(arr)
+    list = arr
+    // 重新创建页面结构
+    createDom(arr)
+    // 重新计算总价
+    countPrice()
+    // 重置全选按钮
+    cka.checked = false
+    alert('结算成功')
+})
 
 
 
